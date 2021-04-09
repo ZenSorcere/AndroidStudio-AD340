@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">AD340_Project</string>
+    <string name="name">Mike Gilson</string>
+    <string name="details">Fun Facts:</string>
+    <string name="deets1">&#8226; Previous QA/Program Mgmt experience in the Tech Industry</string>
+    <string name="deets2">&#8226; Encyclopedic knowledge of 80s/90s cartoon theme songs</string>
+    <string name="deets3">&#8226; Avid scifi/fantasy nerd</string>
+    <string name="deets4">&#8226; Has become quite the desserts baker during Covid Times</string>
+</resources>
