@@ -6,4 +6,12 @@
     <string name="deets2">&#8226; Encyclopedic knowledge of 80s/90s cartoon theme songs</string>
     <string name="deets3">&#8226; Avid scifi/fantasy nerd</string>
     <string name="deets4">&#8226; Has become quite the desserts baker during Covid Times</string>
+    <string name="enter_name">enter name</string>
+    <string name="info_button">INFO</string>
+    <string name="gButton1">Luke</string>
+    <string name="gButton2">Leia</string>
+    <string name="gButton3">Han</string>
+    <string name="gButton4">Chewie</string>
+    <string name="gButton5">R2-D2</string>
+    <string name="gButton6">C-3P0</string>
 </resources>
