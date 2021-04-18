@@ -8,7 +8,7 @@ import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
-    val btnArray = arrayOf("Luke", "Leia", "Han", "Chewie", "R2-D2", "C-3P0")
+    //val btnArray = arrayOf("Luke", "Leia", "Han", "Chewie", "R2-D2", "C-3P0")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,9 +17,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Kotlin function for a Toast
-    // gButton1 is the only one this is implemented on yet.
-
-    // need to figure out how to get button id reference universal
+    // pulls button's text and creates a Toast for that button
     fun showText(view: View) {
         //val button: Button = findViewById(R.id.gButton1)
         val button = view as Button
