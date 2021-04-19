@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         val duration = Toast.LENGTH_SHORT
         val text = button.text
 
-        val btnText = Toast.makeText(context, text, duration).show()
+        val btntext = Toast.makeText(context, text, duration).show()
     }
 
 

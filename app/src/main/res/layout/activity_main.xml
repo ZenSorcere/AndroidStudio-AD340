@@ -130,8 +130,6 @@
         android:backgroundTint="@android:color/darker_gray"
         android:onClick="showText"
         android:text="@string/gButton1"
-
-
         android:textColor="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/gButton2"
         app:layout_constraintHorizontal_bias="0.5"
@@ -185,6 +183,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/gButton3" />
 
+    <!-- HW2 specifies a 2x2 grid, so I'm commenting out my 5th and 6th buttons -->
+    <!--
     <Button
         android:id="@+id/gButton5"
         android:layout_width="0dp"
@@ -214,7 +214,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/gButton5" />
-
+-->
+<!-- GridView code attempt -->
+    <!--
     <GridView
         android:id="@+id/grid1"
         android:layout_width="0dp"
@@ -230,7 +232,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gButton5" />
-
+-->
     <!-- Experiment with trying a nested vertical LinearLayout/Horizontal LinearLayout
           to emulate a grid, but can't get any space between the horizontal elements -->
     <!--
