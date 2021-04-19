@@ -1,4 +1,4 @@
-package com.example.ad340_project
+package com.gilsoncoding.ad340_project
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

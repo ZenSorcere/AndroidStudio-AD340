@@ -1,4 +1,4 @@
-package com.example.ad340_project
+package com.gilsoncoding.ad340_project
 
 import org.junit.Test
 
