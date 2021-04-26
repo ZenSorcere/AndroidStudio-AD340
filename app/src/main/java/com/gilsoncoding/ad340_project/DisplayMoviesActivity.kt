@@ -14,16 +14,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.gilsoncoding.ad340_project.R
 
 class DisplayMoviesActivity : AppCompatActivity() {
-    lateinit var movies: List<MovieModel>
+    lateinit var movies: Array<Array<String>>
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_display_movies)
         // Lookup the recyclerview in activity layout
         val recMovieList = findViewById<View>(R.id.recMovieList) as RecyclerView
         // Initialize movies
-        movies = MovieModel.createMoviesList(20)
+        movies = MovieModel().moviesL
         // Create adapter passing in the sample user data
         val adapter = MoviesAdapter(movies)
         // Attach the adapter to the recyclerview to populate items
@@ -49,16 +47,15 @@ class DisplayMoviesActivity : AppCompatActivity() {
         b.a(EXTRA_MESSAGE, movies[index])
     }*/
     // function to show the DisplayDetails Activity on button click
-    fun displayDetails(view:View) {
-        //contactUri: Uri) {
-        //    val intent = Intent(Intent.ACTION_VIEW, contactUri)
+    fun displayDetails(position: Int) {
+        val selection = movies[position]
+
         val intent = Intent(this, DisplayDetailsActivity::class.java)
-        val movieText = view as TextView //movies[0]
-        val message = movieText.text.toString()
+
     // This will pass and display first entry in the array's title, but how to change based on index?
         //val test = movies[0].title
-
-        intent.putExtra(EXTRA_MESSAGE, message)
+        //intent.putParcelableArrayListExtra(EXTRA_MESSAGE, movies)
+        intent.putExtra("details", selection)
         //intent.putExtra(MOVIE_DETAILS, movies[0])
 
         startActivity(intent)
@@ -69,3 +66,5 @@ class DisplayMoviesActivity : AppCompatActivity() {
         //val MOVIE_DETAILS = "com.gilsoncoding.ad340_project.DETAILS"
     }
 }
+
+

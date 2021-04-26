@@ -10,9 +10,18 @@ class DisplayDetailsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_display_details)
 
         // to display the clicked movie title text:
-        val intent = intent
-        val message = intent.getStringExtra(DisplayMoviesActivity.EXTRA_MESSAGE)
-        val textView = findViewById<TextView>(R.id.textView7)
-        textView.text = message
+        val intent = this.intent.extras
+        val message = intent?.getStringArray("details")
+
+        val titleView = findViewById<TextView>(R.id.mtitle)
+        val yearView = findViewById<TextView>(R.id.mYear)
+        val dirView = findViewById<TextView>(R.id.mDirector)
+        val descView = findViewById<TextView>(R.id.mDesc)
+
+        titleView.text = message?.get(0)
+        yearView.text = message?.get(1)
+        dirView.text = message?.get(2)
+        descView.text = message?.get(4)
+
     }
 }
