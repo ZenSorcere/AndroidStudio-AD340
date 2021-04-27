@@ -2,7 +2,9 @@ package com.gilsoncoding.ad340_project
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
+import com.gilsoncoding.ad340_project.MainActivity.Companion.EXTRA_MESSAGE
 
 class DisplayDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -10,8 +12,11 @@ class DisplayDetailsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_display_details)
 
         // to display the clicked movie title text:
-        val intent = this.intent.extras
-        val message = intent?.getStringArray("details")
+        //val b = this.intent.extras
+        val message = intent.extras?.getStringArray("details")
+
+        //started working on a default image, but didn't complete that
+        val pic = findViewById<ImageView>(R.id.mImage)
 
         val titleView = findViewById<TextView>(R.id.mtitle)
         val yearView = findViewById<TextView>(R.id.mYear)
@@ -20,7 +25,7 @@ class DisplayDetailsActivity : AppCompatActivity() {
 
         titleView.text = message?.get(0)
         yearView.text = message?.get(1)
-        dirView.text = message?.get(2)
+        dirView.text = "Dir: " + message?.get(2)
         descView.text = message?.get(4)
 
     }
