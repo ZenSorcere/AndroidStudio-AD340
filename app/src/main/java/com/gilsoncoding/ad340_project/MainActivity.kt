@@ -1,10 +1,12 @@
 package com.gilsoncoding.ad340_project
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,8 +23,15 @@ class MainActivity : AppCompatActivity() {
 //
 
     }
+    // function to show the DisplayMovies Activity on button click
+    fun displayMovies(view: View?) {
+        val intent = Intent(this, DisplayMoviesActivity::class.java)
+        //val btnText = view as Button
+        //val message = btnText.text.toString()
+        //intent.putExtra(EXTRA_MESSAGE, message)
 
-
+        startActivity(intent)
+    }
 
     // Kotlin function for a Toast
     // pulls button's text and creates a Toast for that button
@@ -34,6 +43,10 @@ class MainActivity : AppCompatActivity() {
         val text = button.text
 
         val btntext = Toast.makeText(context, text, duration).show()
+    }
+
+    companion object {
+        const val EXTRA_MESSAGE = "com.gilsoncoding.ad340_project.MESSAGE"
     }
 
 

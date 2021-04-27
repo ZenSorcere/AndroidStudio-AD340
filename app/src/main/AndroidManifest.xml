@@ -9,7 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AD340_Project">
-        <activity android:name="com.gilsoncoding.ad340_project.MainActivity">
+
+        <activity
+            android:name=".DisplayDetailsActivity"
+            android:parentActivityName=".DisplayMoviesActivity"
+            android:label="Movie Details">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".DisplayMoviesActivity" />
+        </activity>
+
+        <activity
+            android:name=".DisplayMoviesActivity"
+            android:label="Movies List"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
