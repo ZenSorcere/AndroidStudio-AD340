@@ -15,26 +15,29 @@ import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonArrayRequest
+import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONArray
-import retrofit2.Retrofit
-import retrofit2.*
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.awaitResponse
+//import retrofit2.Retrofit
+//import retrofit2.*
+// import retrofit2.converter.gson.GsonConverterFactory
+//import retrofit2.awaitResponse
+
 
 class DisplayTrafficActivity : AppCompatActivity() {
 
     //private val wifiConnected = false
     //private val mobileConnected = false
 
-    //lateinit var cameraList: ListView
+    lateinit var cameraList: ListView
     //lateinit var listAdapter:CameraListAdapter
 
     var dataUrl = "https://web6.seattle.gov/Travelers/api/Map/Data?zoomId=13&type=2"
@@ -43,10 +46,48 @@ class DisplayTrafficActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_display_traffic)
         checkNetworkConnection()
+
+        val cameraData : MutableList<Camera> = ArrayList()
+
+        val queue = Volley.newRequestQueue(this)
+        val adapter = TrafficAdapter(cameraData)
+        val recCameraList = findViewById<RecyclerView>(R.id.recCameraList)
+        recCameraList.adapter = adapter
+        recCameraList.layoutManager = LinearLayoutManager(this)
+        // Thats all...?
+        recCameraList.setHasFixedSize(true)
+
+        val jsonReq = JsonObjectRequest(Request.Method.GET, dataUrl, null,
+            { response ->
+
+                Log.d("camera listings", response.toString())
+                val locations = response.getJSONArray("Features")
+                for (i in 1 until locations.length()) {
+
+
+                    val cameras = locations.getJSONObject(i).getJSONArray("Cameras")
+
+                    val camera = Camera(
+                        //camera.getString("Description")
+                        cameras.getJSONObject(0).getString("Description"),
+                        cameras.getJSONObject(0).getString("ImageUrl"),
+                        cameras.getJSONObject(0).getString("Type")
+                        )
+                    Log.d("desc", camera.toString())
+                    cameraData.add(camera)
+                }
+
+
+                // textView.text = "That didn't work!"
+            }) { error -> Log.d("JSON", "Error: " + error.message) }
+
+// Add the request to the RequestQueue.
+        queue.add(jsonReq)
+
     }
 
-        val context = applicationContext
-        val duration = Toast.LENGTH_SHORT
+        //val context = applicationContext
+        //val duration = Toast.LENGTH_SHORT
         private fun checkNetworkConnection() {
             val connectivityManager = getSystemService(ConnectivityManager::class.java)
             val currentNetwork = connectivityManager.activeNetwork
@@ -54,10 +95,10 @@ class DisplayTrafficActivity : AppCompatActivity() {
             val linkProperties = connectivityManager.getLinkProperties(currentNetwork)
             val status = caps?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
             if (status == true) {
-                Toast.makeText(context, status.toString(), duration).show()
-                val something = findViewById<RecyclerView>(R.id.recCameraList)
+                //Toast.makeText(context, status.toString(), duration).show()
+
             } else {
-                Toast.makeText(context, "No Internet!", duration).show()
+               // Toast.makeText(context, "No Internet!", duration).show()
             }
 
 
@@ -86,11 +127,17 @@ class DisplayTrafficActivity : AppCompatActivity() {
         } // end networkCallback */
         } // end checkNetworkConnection
 
-        val retrofit = Retrofit.Builder()
+
+// ...
+
+    // Instantiate the RequestQueue.
+
+
+        /* val retrofit = Retrofit.Builder()
                 .baseUrl(dataUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-                .create(someinterface::class.java)
+                .create(someinterface::class.java) */
 
         /*val toolbar = findViewById(R.id.toolbar) as Toolbar
         setSupportActionBar(Toolbar)
@@ -170,4 +217,3 @@ class DisplayTrafficActivity : AppCompatActivity() {
 
 
    // class ExampleFragment : Fragment(R.layout.example_fragment)
-}
