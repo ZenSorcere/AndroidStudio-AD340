@@ -13,7 +13,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_weight="1"
-        android:textSize="14sp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
 
@@ -21,12 +21,14 @@
         android:id="@+id/timage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
         android:layout_weight="1"
-        android:gravity="end" />
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside" />
     <!--
             <TextView
                 android:id="@+id/director"

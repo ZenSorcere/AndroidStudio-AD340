@@ -76,7 +76,7 @@ class DisplayTrafficActivity : AppCompatActivity() {
                     Log.d("desc", camera.toString())
                     cameraData.add(camera)
                 }
-
+                adapter.notifyDataSetChanged()
 
                 // textView.text = "That didn't work!"
             }) { error -> Log.d("JSON", "Error: " + error.message) }
