@@ -23,3 +23,28 @@ Repo for Android Studio work for Mobile Dev class AD340.
  - UI elements should be fully visible on a range of phone screen sizes.
 
  - Text strings should be defined in a resource file separate from your layout elements.
+
+## Zombie Movies List (Homework 3)
+- Add two new activities to your app - 'Movies', 'Movie Details'
+
+- Update home page to launch 'Movies' when the corresponding button in the 'grid' is clicked.
+
+- The Movies activity should display the title and year for each movie in this list. (source: https://collider.com/best-zombie-movies-of-all-time/)
+
+- When a list item is selected, launch the movie detail activity to display  title, year, director, and description for the selected item.
+  - Your detail activity should receive movie data as part of the intent bundle.
+
+- Enable screen title and 'back' navigation on each activity
+
+- Layout & sizing of UI elements should appropriate for a range of phone screen sizes. List and description fields should be scrollable.
+
+## Live Cams (Homework 4)
+ - Add a new activity to display a list of traffic camera locations.
+   - The list should display description and image for each camera. You can re-use much of the layout code from HW3.
+
+ - Camera data can be loaded from https://web6.seattle.gov/Travelers/api/Map/Data?zoomId=13&type=2. 
+
+ - JSON data should be mapped to a Camera class for use within the application.
+
+ - Activity should check the device connectivity status and display a graceful warning if not connected. You should only make a network request if the application has connectivity.
+ - Update one of the buttons on your main screen to launch this new activity when clicked
