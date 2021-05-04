@@ -1,6 +1,8 @@
 package com.gilsoncoding.ad340_project
 
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -37,6 +39,7 @@ class MainActivity : AppCompatActivity() {
     fun displayTraffic(view: View?) {
         val intent = Intent(this, DisplayTrafficActivity::class.java)
         startActivity(intent)
+
     }
     // Kotlin function for a Toast
     // pulls button's text and creates a Toast for that button
