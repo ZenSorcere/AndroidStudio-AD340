@@ -86,8 +86,8 @@ class DisplayTrafficActivity : AppCompatActivity() {
 
     }
 
-        //val context = applicationContext
-        //val duration = Toast.LENGTH_SHORT
+        val context = applicationContext
+        val duration = Toast.LENGTH_LONG
         private fun checkNetworkConnection() {
             val connectivityManager = getSystemService(ConnectivityManager::class.java)
             val currentNetwork = connectivityManager.activeNetwork
@@ -98,7 +98,7 @@ class DisplayTrafficActivity : AppCompatActivity() {
                 //Toast.makeText(context, status.toString(), duration).show()
 
             } else {
-               // Toast.makeText(context, "No Internet!", duration).show()
+               Toast.makeText(context, "No Internet!", duration).show()
             }
 
 
