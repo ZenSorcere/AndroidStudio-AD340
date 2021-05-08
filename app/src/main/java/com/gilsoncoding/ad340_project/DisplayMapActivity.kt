@@ -42,10 +42,11 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
-        checkForPermissions(android.Manifest.permission.ACCESS_FINE_LOCATION, "location", LOCATION_REQ)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        checkForPermissions(android.Manifest.permission.ACCESS_FINE_LOCATION, "location", LOCATION_REQ)
 
-        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
+
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.map_fragment) as? SupportMapFragment
         mapFragment?.getMapAsync(this)
         /*inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
             val locText: TextView = itemView.findViewById(R.id.LocationText)
@@ -122,11 +123,14 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
     override fun onMapReady(googleMap: GoogleMap?) {
-        mapView.onResume()
+        Log.d("LOCATION", "onMapReady")
+        //mapView.onResume()
         map = googleMap ?: return
         enableMyLocation()
-
-        
+        /*var home =
+        googleMap.apply {
+            moveCamera(CameraUpdateFactory.newLatLng(myLocation))
+        */
         //map.
         //updateLocationUI()
         //getDeviceLocation()
@@ -155,9 +159,11 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     fun loadCameraLocs(dataUrl: String?) {
-        val cameraData: MutableList<Camera> = ArrayList()
+        Log.d("DATA", "loadCameraLocs")
+        //val cameraData: MutableList<Camera> = ArrayList()
 
         val queue = Volley.newRequestQueue(this)
+        Log.d("VOLLEY", "queue created")
         //val adapter = TrafficAdapter(cameraData)
         //val recCameraList = findViewById<RecyclerView>(R.id.recCameraList)
        // recCameraList.adapter = adapter
@@ -167,7 +173,7 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
         val jsonReq = JsonObjectRequest(Request.Method.GET, dataUrl, null,
                 { response ->
 
-                    // Log.d("camera listings", response.toString())
+                    Log.d("camera listings", response.toString())
                     val locations = response.getJSONArray("Features")
                     for (i in 1 until locations.length()) {
 
@@ -185,6 +191,7 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
                         )
                         // Log.d("desc", camera.toString())
                         cameraData.add(camera)
+
                     }
                     showMarkers();
                     //adapter.notifyDataSetChanged()
@@ -199,13 +206,16 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
         for (i in 0 until cameraData.size)
         {
             val c = cameraData[i]
+            println(c)
             val position = LatLng(c.coords[0], c.coords[1])
+            println(position)
             val m = map.addMarker(
                     MarkerOptions()
                     .position(position)
                     .title(c.Description)
                     .snippet(c.ImageUrl)
             )
+            println(m)
             m.tag = i
         }
     }
