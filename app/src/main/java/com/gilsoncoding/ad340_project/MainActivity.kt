@@ -28,10 +28,6 @@ class MainActivity : AppCompatActivity() {
     // function to show the DisplayMovies Activity on button click
     fun displayMovies(view: View?) {
         val intent = Intent(this, DisplayMoviesActivity::class.java)
-        //val btnText = view as Button
-        //val message = btnText.text.toString()
-        //intent.putExtra(EXTRA_MESSAGE, message)
-
         startActivity(intent)
     }
 
@@ -39,7 +35,11 @@ class MainActivity : AppCompatActivity() {
     fun displayTraffic(view: View?) {
         val intent = Intent(this, DisplayTrafficActivity::class.java)
         startActivity(intent)
+    }
 
+    fun displayMap(view: View?) {
+        val intent = Intent(this, DisplayMapActivity::class.java)
+        startActivity(intent)
     }
     // Kotlin function for a Toast
     // pulls button's text and creates a Toast for that button

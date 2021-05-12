@@ -46,12 +46,15 @@ class DisplayTrafficActivity : AppCompatActivity() {
 
 
                         val cameras = locations.getJSONObject(i).getJSONArray("Cameras")
-
+                        val pc = locations.getJSONObject(i)
+                        val pointCoordinates = pc.getJSONArray("PointCoordinate")
+                        val latLngs = doubleArrayOf(pointCoordinates.getDouble(0), pointCoordinates.getDouble(1))
                         val camera = Camera(
 
                                 cameras.getJSONObject(0).getString("Description"),
                                 cameras.getJSONObject(0).getString("ImageUrl"),
-                                cameras.getJSONObject(0).getString("Type")
+                                cameras.getJSONObject(0).getString("Type"),
+                                latLngs
                         )
                         // Log.d("desc", camera.toString())
                         cameraData.add(camera)
