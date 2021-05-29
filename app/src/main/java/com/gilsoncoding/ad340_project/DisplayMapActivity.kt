@@ -132,7 +132,7 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun getDeviceLocation () {
         Log.d("FUNC: ", "getDevLoc start")
         try {
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                     == PackageManager.PERMISSION_GRANTED) {
                 Log.d("FUNC: ", "getDevLoc perm granted")
                 val locationsResult = fusedLocationClient.lastLocation

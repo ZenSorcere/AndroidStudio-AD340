@@ -6,8 +6,8 @@
     <string name="deets2">&#8226; Encyclopedic knowledge of 80s/90s cartoon theme songs</string>
     <string name="deets3">&#8226; Avid scifi/fantasy nerd</string>
     <string name="deets4">&#8226; Has become quite the desserts baker during Covid Times</string>
-    <string name="enter_name">enter name</string>
-    <string name="info_button">INFO</string>
+    <string name="enter_name">enter username</string>
+    <string name="info_button">LOGIN</string>
     <string name="gButton1">MOVIES</string>
     <string name="gButton2">TRAFFIC CAMS</string>
     <string name="gButton3">TRAFFIC CAM MAP</string>
@@ -16,4 +16,6 @@
     <string name="gButton6">C-3P0</string>
     <string name="showLuke">Luke Skywalker</string>
     <string name="locHeader">Location:</string>
+    <string name="email">enter email</string>
+    <string name="password">enter password</string>
 </resources>

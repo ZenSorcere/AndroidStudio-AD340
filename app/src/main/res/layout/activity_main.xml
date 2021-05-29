@@ -88,7 +88,7 @@
 
     </LinearLayout>
 
-    <!-- enter name field -->
+    <!-- user name field -->
     <EditText
         android:id="@+id/editTextTextPersonName"
         android:layout_width="0dp"
@@ -96,7 +96,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="30dp"
-
+        android:autofillHints="@string/enter_name"
         android:ems="10"
         android:hint="@string/enter_name"
         android:inputType="textPersonName"
@@ -105,6 +105,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
+    <!-- email address field -->
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="30dp"
+        android:autofillHints="@string/email"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        app:layout_constrainedWidth="false"
+        app:layout_constraintEnd_toStartOf="@+id/info_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+
+    <!-- password field -->
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="30dp"
+        android:autofillHints="@string/password"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        app:layout_constrainedWidth="false"
+        app:layout_constraintEnd_toStartOf="@+id/info_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
+
     <!-- Info Button -->
     <Button
         android:id="@+id/info_button"
@@ -112,10 +146,10 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="60dp"
         android:backgroundTint="@android:color/darker_gray"
-        android:onClick="showText"
+        android:onClick="logIn"
         android:text="@string/info_button"
         android:textColor="@color/black"
-        app:layout_constraintBaseline_toBaselineOf="@+id/editTextTextPersonName"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextPassword"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Grid of buttons done with Constraint Layout -->
@@ -134,7 +168,7 @@
         app:layout_constraintEnd_toStartOf="@+id/gButton2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
     <Button
         android:id="@+id/gButton2"
