@@ -48,3 +48,38 @@ Repo for Android Studio work for Mobile Dev class AD340.
 
  - Activity should check the device connectivity status and display a graceful warning if not connected. You should only make a network request if the application has connectivity.
  - Update one of the buttons on your main screen to launch this new activity when clicked
+
+## Location, Location, Location (Homework 5)
+- This week you learned how to work with device location in Android.
+
+ - Add a new activity that:
+   - detects the user's location
+   - displays a map, centered on the user's location
+   - displays a marker for each traffic camera loaded in the previous homework
+   - displays the camera label when a marker is clicked
+
+
+## Data Persistence (Homework 6)
+- Update your main activity with additional text-entry fields so users can enter:
+  - user name (you can repurpose the existing text field)
+  - email address
+  - password (user entries should be hidden)
+- Be sure to use appropriate field types for each.
+
+- Also, update your application with these changes:
+  - Rename the button associated with text fields to 'Login'
+  - Create a function to validate login-form entries
+  - Add a new activity to load & display data from Firebase. You will need to add page title and back navigation for consistency with other activities in your app.
+  - Add sign-in code to your main activity and modify to:
+    - Validate that each text-field is non-empty (using the function you created earlier)
+    - Prevent navigation & show a warning if any field entries are invalid,
+    - Store valid field entries to shared preferences;
+  - Obtain a google-services.json file and add Firebase dependencies to your app (see steps 3 & 4 at https://firebase.google.com/docs/android/setup )
+
+- When your app runs it should:
+  - Populate each text-entry field with a previously-stored entry if available,
+  - Invoke the signIn function when the Login button is clicked. 
+  - Validate text-entries and if entries are valid, sign user into into Firebase, launch FirebaseActivity, and show the name entered along with data for other users who have signed in
+
+- Finally, Update your application to retrieve & display information from a shared Firebase project for this class. 
+
