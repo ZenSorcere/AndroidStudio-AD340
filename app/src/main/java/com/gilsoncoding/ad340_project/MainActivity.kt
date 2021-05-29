@@ -32,8 +32,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
         mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE)
 
         mNameField = findViewById(R.id.editTextTextPersonName)
@@ -43,12 +41,6 @@ class MainActivity : AppCompatActivity() {
         mNameField.setText(mPreferences.getString("name", "nametest"))
         mEmailField.setText(mPreferences.getString("email", "emailtest"))
         mPassword.setText(mPreferences.getString("password", "passtest"))
-
-//        val myButton: Button = findViewById(R.id.gButton1)
-//        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, btnArray)
-//        val gridView: GridView = findViewById(R.id.grid1)
-//        gridView.adapter = adapter
-
     }
 
     fun logIn(view: View?) {
@@ -95,7 +87,6 @@ class MainActivity : AppCompatActivity() {
             validated = false
         } else {
             mPassword.error = null
-
         }
         if (TextUtils.isEmpty(name)) {
             mNameField.error = "Username Required"
@@ -114,18 +105,14 @@ class MainActivity : AppCompatActivity() {
         var email : String = mEmailField.text.toString()
         var password : String = mPassword.text.toString()
 
-
         if (!validateLogin(name, email, password)) {
             return
         }
-
         // 2 - save valid entries to shared preferences
 
         mPreferences.edit(true) { putString("name", name)}
         mPreferences.edit(true) { putString("email", email)}
         mPreferences.edit(true) { putString("password", password)}
-        /*mSharedPreferencesHelper.saveEntry("email", email);
-        mSharedPreferencesHelper.saveEntry("password", password);*/
 
         // 3 - sign into Firebase
         val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -161,7 +148,6 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
     }
-
 
     companion object {
         const val EXTRA_MESSAGE = "com.gilsoncoding.ad340_project.MESSAGE"
