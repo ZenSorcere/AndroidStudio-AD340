@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import com.squareup.picasso.Picasso
 import com.gilsoncoding.ad340_project.MainActivity.Companion.EXTRA_MESSAGE
 
 class DisplayDetailsActivity : AppCompatActivity() {
@@ -26,6 +27,7 @@ class DisplayDetailsActivity : AppCompatActivity() {
         titleView.text = message?.get(0)
         yearView.text = message?.get(1)
         dirView.text = "Dir: " + message?.get(2)
+        Picasso.get().load(message?.get(3)).into(pic)
         descView.text = message?.get(4)
 
     }
