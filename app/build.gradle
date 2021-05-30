@@ -8,6 +8,7 @@ plugins {
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
+    testOptions.unitTests.includeAndroidResources = true
 
     defaultConfig {
         applicationId "com.gilsoncoding.ad340_project"
@@ -55,6 +56,8 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    testImplementation 'com.google.truth:truth:1.0.1'
+    androidTestImplementation 'com.google.truth:truth:1.0.1'
     api 'com.google.firebase:firebase-database:20.0.0'
     api 'com.google.firebase:firebase-auth:21.0.1'
 }

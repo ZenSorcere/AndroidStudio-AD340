@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
 
         val btntext = Toast.makeText(context, text, duration).show()
     }
-    private fun validateLogin (name: String, email : String, password: String): Boolean {
+    fun validateLogin (name: String, email : String, password: String): Boolean {
         var validated = true
         if (TextUtils.isEmpty(email)) {
             mEmailField.error = "Email Required"
