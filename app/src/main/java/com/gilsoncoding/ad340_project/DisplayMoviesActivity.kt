@@ -28,39 +28,20 @@ class DisplayMoviesActivity : AppCompatActivity(), MoviesAdapter.OnItemClickList
         // Thats all...?
         recMovieList.setHasFixedSize(true)
 
-        // to display the clicked button (gButton1) text:
-        //val intent = intent
-        //val message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE)
-        //val textView = findViewById<TextView>(R.id.textView7)
-        //textView.text = message
-
 
     }
-    // attempt to replicate class lecture--my ArrayList is of MovieModel object, not strings, tho
-    /*fun showMovie(index:Int) {
-        val intent = Intent(this, DisplayDetailsActivity::class.java)
-        val b = Bundle()
-        b.putStringArray(EXTRA_MESSAGE, movies[index])
-        b.a(EXTRA_MESSAGE, movies[index])
-    }*/
-    // function to show the DisplayDetails Activity on button click
-    //fun displayDetails(view: View) {
+
     override fun displayDetails(position: Int) {
 
         val selection = movies[position]
-        //val b = Bundle()
+
         val intent = Intent(this, DisplayDetailsActivity::class.java)
-        //b.putStringArray(EXTRA_MESSAGE, selection)
+
         intent.putExtra("details", selection)
 
         startActivity(intent)
         onPause()
     }
-
-    /*companion object {
-        const val EXTRA_MESSAGE = "com.gilsoncoding.ad340_project.MESSAGE"
-        //val MOVIE_DETAILS = "com.gilsoncoding.ad340_project.DETAILS"
-    }*/
 
 }
 

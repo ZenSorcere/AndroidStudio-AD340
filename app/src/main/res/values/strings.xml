@@ -11,10 +11,7 @@
     <string name="gButton1">MOVIES</string>
     <string name="gButton2">TRAFFIC CAMS</string>
     <string name="gButton3">CAMERA MAP</string>
-    <string name="gButton4">Chewie</string>
-    <string name="gButton5">R2-D2</string>
-    <string name="gButton6">C-3P0</string>
-    <string name="showLuke">Luke Skywalker</string>
+    <string name="gButton4">Toast</string>
     <string name="locHeader">Location:</string>
     <string name="email">enter email</string>
     <string name="password">enter password</string>

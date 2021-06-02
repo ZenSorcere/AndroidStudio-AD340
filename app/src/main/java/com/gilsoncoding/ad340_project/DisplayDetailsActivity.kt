@@ -13,7 +13,6 @@ class DisplayDetailsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_display_details)
 
         // to display the clicked movie title text:
-        //val b = this.intent.extras
         val message = intent.extras?.getStringArray("details")
 
         //started working on a default image, but didn't complete that

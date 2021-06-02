@@ -62,7 +62,6 @@ class MoviesAdapter(private val movies: Array<Array<String>>, private val listen
 
         val titleText = holder.titleText
         val yearText = holder.yearText
-        //val dirText = viewHolder.dirText
         titleText.text = movie[0]
         yearText.text = movie[1]
 

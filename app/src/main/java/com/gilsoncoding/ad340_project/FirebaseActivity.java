@@ -3,7 +3,6 @@ package com.gilsoncoding.ad340_project;
 import android.content.Context;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,10 +40,6 @@ public class FirebaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firebase);
 
-        /*Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        */
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
@@ -126,12 +121,10 @@ public class FirebaseActivity extends AppCompatActivity {
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            // View rowView = inflater.inflate(R.layout.list_2_items, parent, false);
             View rowView = inflater.inflate(R.layout.list_item, parent, false);
             TextView title = rowView.findViewById(R.id.item_title);
             title.setText(values.get(position).username);
             TextView subtitle = rowView.findViewById(R.id.item_subtitle);
-            // subtitle.setText(String.format("Updated: %s", values.get(position).updated));
             subtitle.setText("Updated: " + values.get(position).updated);
 
             return rowView;

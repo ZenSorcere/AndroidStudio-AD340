@@ -1,6 +1,5 @@
 package com.gilsoncoding.ad340_project
 
-import android.R.attr.password
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -12,8 +11,6 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
@@ -26,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var mPreferences: SharedPreferences
     var sharedPrefFile : String = "com.gilsoncoding.ad340_project"
-//    val btnArray = arrayOf("Luke", "Leia", "Han", "Chewie", "R2-D2", "C-3P0")
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, DisplayTrafficActivity::class.java)
         startActivity(intent)
     }
-
+    // function to show DisplayMap Activity on button click
     fun displayMap(view: View?) {
         val intent = Intent(this, DisplayMapActivity::class.java)
         startActivity(intent)
@@ -66,7 +63,6 @@ class MainActivity : AppCompatActivity() {
     // Kotlin function for a Toast
     // pulls button's text and creates a Toast for that button
     fun showText(view: View) {
-        //val button: Button = findViewById(R.id.gButton1)
         val button = view as Button
         val context = applicationContext
         val duration = Toast.LENGTH_SHORT
@@ -109,7 +105,6 @@ class MainActivity : AppCompatActivity() {
             return
         }
         // 2 - save valid entries to shared preferences
-
         mPreferences.edit(true) { putString("name", name)}
         mPreferences.edit(true) { putString("email", email)}
         mPreferences.edit(true) { putString("password", password)}

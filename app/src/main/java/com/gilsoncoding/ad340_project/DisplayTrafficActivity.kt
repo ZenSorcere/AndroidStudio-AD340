@@ -39,8 +39,6 @@ class DisplayTrafficActivity : AppCompatActivity() {
 
         val jsonReq = JsonObjectRequest(Request.Method.GET, dataUrl, null,
                 { response ->
-
-                    // Log.d("camera listings", response.toString())
                     val locations = response.getJSONArray("Features")
                     for (i in 1 until locations.length()) {
 
@@ -56,7 +54,7 @@ class DisplayTrafficActivity : AppCompatActivity() {
                                 cameras.getJSONObject(0).getString("Type"),
                                 latLngs
                         )
-                        // Log.d("desc", camera.toString())
+
                         cameraData.add(camera)
                     }
                     adapter.notifyDataSetChanged()
@@ -76,7 +74,6 @@ class DisplayTrafficActivity : AppCompatActivity() {
         val linkProperties = connectivityManager.getLinkProperties(currentNetwork)
         val status = caps?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
         if (status == true) {
-            // attempt to move volley request queue code here resulted in activity crashing
 
         } else {
             Toast.makeText(applicationContext, "No Internet!!", Toast.LENGTH_LONG).show()

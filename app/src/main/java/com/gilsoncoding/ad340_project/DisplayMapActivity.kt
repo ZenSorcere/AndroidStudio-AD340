@@ -1,8 +1,6 @@
 package com.gilsoncoding.ad340_project
 
-//import android.os.Handler
-//import android.os.Looper
-//import androidx.lifecycle.whenCreated
+
 import android.Manifest
 import android.app.AlertDialog
 import android.content.ContentValues.TAG
@@ -27,8 +25,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
-//import kotlinx.coroutines.Dispatchers
-//import kotlinx.coroutines.withContext
+
 
 
 class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -52,11 +49,6 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map_fragment) as? SupportMapFragment
         mapFragment?.getMapAsync(this)
 
-        //Attempt to delay OnMapReady function
-            //Looper.myLooper()?.let { Handler(it) }?.postDelayed({ mapFragment?.getMapAsync(this) }, 5000)
-
-        // Attempt to delay start of loadCameraLocs, since it calls the Markers function
-            //Looper.myLooper()?.let { Handler(it) }?.postDelayed({ loadCameraLocs(dataUrl) }, 10000)
         loadCameraLocs(dataUrl)
     }
 
@@ -273,14 +265,14 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
         for (i in 0 until cameraData.size)
         {
             val c = cameraData[i]
-            //println(c)
+
             val position = LatLng(c.coords[0], c.coords[1])
-            //println(position)
+
             val m = map.addMarker(
                     MarkerOptions()
                             .position(position)
                             .title(c.Description)
-                            //.snippet(c.ImageUrl)
+
             )
             m.tag = i
         }
