@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun logIn(view: View?) {
-        Log.d("FIREBASE", "click")
+        //Log.d("FIREBASE", "click")
         signIn()
     }
     // function to show the DisplayMovies Activity on button click
@@ -94,7 +94,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun signIn() {
-        Log.d("FIREBASE", "signIn")
+        //Log.d("FIREBASE", "signIn")
 
         // 1 - validate name, email, and password entries
         var name : String = mNameField.text.toString()
@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity() {
         val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
-                    Log.d("FIREBASE", "signIn:onComplete:" + task.isSuccessful)
+                    //Log.d("FIREBASE", "signIn:onComplete:" + task.isSuccessful)
                     if (task.isSuccessful) {
                         // update profile
                         val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
@@ -124,7 +124,7 @@ class MainActivity : AppCompatActivity() {
                         user?.updateProfile(profileUpdates)
                             ?.addOnCompleteListener { task ->
                                 if (task.isSuccessful) {
-                                    Log.d("FIREBASE", "User profile updated.")
+                                    //Log.d("FIREBASE", "User profile updated.")
                                     // Go to FirebaseActivity
                                     startActivity(
                                         Intent(
@@ -135,7 +135,7 @@ class MainActivity : AppCompatActivity() {
                                 }
                             }
                     } else {
-                        Log.d("FIREBASE", "sign-in failed")
+                        //Log.d("FIREBASE", "sign-in failed")
                         Toast.makeText(
                             this@MainActivity, "Sign In Failed",
                             Toast.LENGTH_SHORT

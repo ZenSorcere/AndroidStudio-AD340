@@ -63,7 +63,7 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
                             .addOnSuccessListener { location: Location? ->
                                 // Got last known location. In some rare situations this can be null.
                                 lastKnownLocation = location
-                                Log.d("fused-per: ", lastKnownLocation.toString())
+                                //Log.d("fused-per: ", lastKnownLocation.toString())
                             }
                 }
                 shouldShowRequestPermissionRationale(permission) -> showDialog(permission, name, requestCode)
@@ -122,17 +122,17 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     // method that is supposed to get location from the device, but I can't get onMapReady to wait till it's completed
     private fun getDeviceLocation () {
-        Log.d("FUNC: ", "getDevLoc start")
+        //Log.d("FUNC: ", "getDevLoc start")
         try {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                     == PackageManager.PERMISSION_GRANTED) {
-                Log.d("FUNC: ", "getDevLoc perm granted")
+                //Log.d("FUNC: ", "getDevLoc perm granted")
                 val locationsResult = fusedLocationClient.lastLocation
                 locationsResult.addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        Log.d("FUNC: ", "getDevLoc task successful")
+                        //Log.d("FUNC: ", "getDevLoc task successful")
                         lastKnownLocation = task.result
-                        Log.d("Dev-lastknownLoc: ", lastKnownLocation.toString())
+                        //Log.d("Dev-lastknownLoc: ", lastKnownLocation.toString())
                         if (lastKnownLocation != null) {
                             Log.d("FUNC: ", "getDevLoc lastKnown not null")
                             map?.moveCamera(CameraUpdateFactory.newLatLngZoom(
@@ -142,41 +142,41 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
                         }
 
                         } else {
-                        Log.d("FUNC: ", "getDevLoc task FAIL")
-                        Log.d(TAG, "Current location is null. Using defaults.")
-                        Log.e(TAG, "Exception: %s", task.exception)
+                        //Log.d("FUNC: ", "getDevLoc task FAIL")
+                        //Log.d(TAG, "Current location is null. Using defaults.")
+                        //Log.e(TAG, "Exception: %s", task.exception)
                         map?.moveCamera(CameraUpdateFactory
                                 .newLatLngZoom(LatLng(0.0, 0.0), 8F))
                         map?.uiSettings?.isMyLocationButtonEnabled = false
-                        Log.d("DevLoc-Else: ", lastKnownLocation.toString())
+                        //Log.d("DevLoc-Else: ", lastKnownLocation.toString())
                     }
                     }
                 }
 
             } catch (e: SecurityException) {
-                Log.e("Exception: %s", e.message, e)
+                //Log.e("Exception: %s", e.message, e)
         }
     }
 
 
 
     override fun onMapReady(googleMap: GoogleMap?) {
-        Log.d("LOCATION", "onMapReady")
+        //Log.d("LOCATION", "onMapReady")
         map = googleMap?: return
         enableMyLocation()
         map.uiSettings.isZoomControlsEnabled = true;
 
 
-        Log.d("onMap-lastknownLoc: ", lastKnownLocation.toString())
+        //Log.d("onMap-lastknownLoc: ", lastKnownLocation.toString())
         updateMap(googleMap)
-        Log.d("FUNC: ", "onMapReady updateMap called")
+        //Log.d("FUNC: ", "onMapReady updateMap called")
 
     }
 
     // removed actual map update from onMapReady, thinking I might need to call map updates
     //   more than once, but I get rewrite errors
     fun updateMap (googleMap: GoogleMap?) {
-        Log.d("FUNC: ", "updateMap start")
+        //Log.d("FUNC: ", "updateMap start")
 
         // Initially had an if statement based on lastKnownLocation being set in a timely fashion
         //if (lastKnownLocation != null) {
@@ -200,7 +200,7 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
                 //locHeader.text = map.addMarker(MarkerOptions(title.toString()))
                 """${park.latitude}, ${park!!.longitude}""".also { locHeader.text = it }
 
-                Log.d("FUNC: ", "gasworks marker")
+                //Log.d("FUNC: ", "gasworks marker")
             }
 
         // Else statement for the knownlocation if statement
@@ -225,15 +225,15 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
     } //end of updateMap
 
     fun loadCameraLocs(dataUrl: String?) {
-        Log.d("DATA", "loadCameraLocs")
+        //Log.d("DATA", "loadCameraLocs")
 
         val queue = Volley.newRequestQueue(this)
-        Log.d("VOLLEY", "queue created")
+        //Log.d("VOLLEY", "queue created")
 
         val jsonReq = JsonObjectRequest(Request.Method.GET, dataUrl, null,
                 { response ->
 
-                    Log.d("camera listings", response.toString())
+                    //Log.d("camera listings", response.toString())
                     val locations = response.getJSONArray("Features")
                     for (i in 1 until locations.length()) {
 
@@ -261,7 +261,7 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
     fun showMarkers() {
-        Log.d("DATA", cameraData.toString())
+        //Log.d("DATA", cameraData.toString())
         for (i in 0 until cameraData.size)
         {
             val c = cameraData[i]

@@ -59,7 +59,7 @@ public class FirebaseActivity extends AppCompatActivity {
         members.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.d("FIREBASE", "onDataChange");
+                //Log.d("FIREBASE", "onDataChange");
                 for (DataSnapshot userSnapshot: dataSnapshot.getChildren()) {
                     Object username = userSnapshot.child("username").getValue();
                     if (username != null) {
@@ -76,7 +76,7 @@ public class FirebaseActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 // Getting Post failed, log a message
-                Log.w(TAG, "loadUsers:onCancelled", databaseError.toException());
+                //Log.w(TAG, "loadUsers:onCancelled", databaseError.toException());
                 // ...
             }
         });
